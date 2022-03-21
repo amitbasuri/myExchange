@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option go_package = "./myexchange";
+
+package myExchange;
+
+service Exchange {
+  rpc Convert (ConvertRequest) returns (ConvertResponse);
+  rpc BatchConvert (BatchConvertRequest) returns (BatchConvertResponse);
+  rpc ListRates(ListRatesRequest) returns (ListRatesResponse);
+}
+
+message ConvertRequest {
+  string from = 1;
+  string to = 2;
+  float amount = 3;
+}
+
+message ConvertResponse {
+  float amount = 1;
+}
+
+message BatchConvertRequest {
+  repeated ConvertRequest convertRequests = 1;
+}
+
+message BatchConvertResponse {
+  repeated float convertedAmounts = 1;
+}
+
+
+message ListRatesRequest {
+  int32 pageSize = 1;
+  string pageNumber = 2;
+}
+
+message Rate {
+  string tag = 1;
+  float rate = 2;
+}
+
+message ListRatesResponse {
+  repeated Rate rates = 1;
+  string sourceTag = 2;
+  string nextPageNumber = 3;
+}
