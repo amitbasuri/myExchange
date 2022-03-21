@@ -1,8 +1,3 @@
-Business requirements
-
-- As XYZ token minter I want to have the ability to freeze XYZ tokens on any account. Frozen tokens can’t be moved
-  outside of account in any way unless unfrozen.
-- As XYZ token minter I want to have the ability to unfreeze XYZ token on any account.
 
 # x/tokenFreezer
 
